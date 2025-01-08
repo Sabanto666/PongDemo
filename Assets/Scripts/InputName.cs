@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class InputName : MonoBehaviour
+{
+
+    public bool isPlayer;
+    public TMP_InputField inputField;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        inputField.onValueChanged.AddListener(UpdateName);
+    }
+
+    // Update is called once per frame
+    public void UpdateName(string name)
+    {
+        if (isPlayer)
+        {
+            SaveController.Instance.namePlayer = name;
+        }
+        else
+        {
+            SaveController.Instance.nameEnemy = name;
+        }
+    }
+}
